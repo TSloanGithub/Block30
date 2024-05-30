@@ -2,6 +2,7 @@ import { useState } from 'react'
 import bookLogo from './assets/books.png'
 import LogInForm from './components/Login'
 import {AddAllBooks} from './components/Books.jsx'
+import Navbar from './components/Navigations.jsx'
 function App() {
   const [token, setToken] = useState(null)
 
