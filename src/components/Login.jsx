@@ -2,20 +2,36 @@
 import React from "react"
 
 export default function LogInForm() {
+    function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        console.log(data)
+    }
+
+    // fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login', {
+    //     method: "POST",
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //         email: 
+    //     })
+    // })
 
 
-        return(
-            <>
+    return(
+        <>
             <div>
-                <form>
+                <form method="post" onSubmit={handleSubmit}>
                     <label>Email:</label>
-                    <input type="email" placeholder="Email Login"></input>
+                    <input type="email" name="userEmail" placeholder="Email Login"/>
                     <label>Password:</label>
-                    <input type="password" placeholder="Password"></input>
+                    <input type="password" name="userPassword" placeholder="Password"></input>
                     <button type="submit">Submit</button>
-                    </form>
+                </form>
             </div>
-            </>
+        </>
 
     )
 }

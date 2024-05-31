@@ -25,11 +25,14 @@ export function AddAllBooks(){
         fetchBooks();
     },[])
     return(
+        <>
+        <h1>Tyler's Library Collection</h1>
         <ul>
             {books.map((book)=>{
-            return <BookTitle title={book.title}/>
+            return <BookTitle key={book.id} title={book.title} id={book.id} available={book.available}/>
             })}
         </ul>
+        </>
     );
 }
 
@@ -37,12 +40,3 @@ export function AddAllBooks(){
 
 
 
-async function GetSingleBookInfo (){
-    try{
-        const response = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/:bookId')
-        const result = await response.json();
-    } catch(e){
-        console.error(e);
-        console.error(`Failed to get book of ${Id}`)
-    }
-}

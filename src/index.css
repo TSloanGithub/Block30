@@ -10,4 +10,12 @@ body {
   margin-right: 10px;
 }
 
+.availableBook{
+  background-color: green;
+}
+
+.notAvailableBook{
+  background-color: red;
+}
+
 /* Add your own custom styles here */
