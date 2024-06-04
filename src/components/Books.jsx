@@ -3,6 +3,8 @@ Fetch the book data from the provided API. Users should be able to click on an i
 import react from "react";
 import{ useState, useEffect } from 'react'
 import BookTitle from "./BookTitleListItem";
+import LogInForm from "./Login";
+import Navbar from "./Navigations";
 
 
 
@@ -26,6 +28,8 @@ export function AddAllBooks(){
     },[])
     return(
         <>
+        <Navbar/>
+        <LogInForm/>
         <h1>Tyler's Library Collection</h1>
         <ul>
             {books.map((book)=>{

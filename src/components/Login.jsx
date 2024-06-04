@@ -7,22 +7,28 @@ export default function LogInForm() {
     const [userPassword, setUserPassword] = useState("");
 
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
         const data = new FormData(form);
         console.log(data)
+
+        try{
+            const result = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userEmail, userPassword})
+        });
+        } catch (error){
+            console.error('Error Submitting Login Info');
+        }
+        setUserEmail("");
+        setUserPassword("");
     }
 
-    // fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login', {
-    //     method: "POST",
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         email: 
-    //     })
-    // })
+
 
 
     return(
@@ -41,7 +47,8 @@ export default function LogInForm() {
                     <label>Password:</label>
                     <input 
                         type="password" 
-                        name="userPassword" 
+                        name="userPassword"
+                        value={userPassword} 
                         onChange={(e)=>{
                             setUserPassword(e.target.value)
                         }}
@@ -50,6 +57,7 @@ export default function LogInForm() {
                     <button type="submit">Submit</button>
                 </form>
             </div>
+
         </>
 
     )
