@@ -2,13 +2,21 @@
 //Idea is to have a main page where you can check out books, user profile and a 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import RegisterNewUser from './Register'
+import LogInForm from './Login'
+import AccountDetails from './Account'
 
-export default function Navbar(){
+export default function Navbar({token, setToken}){
     return(
         <div id="navbar">
-            <Link to="/">home</Link>
-            <Link to="register">New Users Register Here!</Link>
+            <Link to="/">Home</Link>
+            <Link to="register">Register Here!</Link>
+            {token ? (<>
+            <Link to="account">Account</Link>
+            </>
+        ) : (<>
+            <LogInForm setToken={setToken}/>
+            </>
+        )}
         </div>
     )
 }

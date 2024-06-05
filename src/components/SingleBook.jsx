@@ -2,9 +2,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CheckOutBook from "./Checkout";
 
 
-export default function SingleBookDetails(){
+export default function SingleBookDetails({token}){
     const params = useParams();
     const [singleBook, setSingleBook] = useState(null);
     async function GetSingleBookInfo (id){
@@ -23,6 +24,9 @@ export default function SingleBookDetails(){
     },[])
     if(singleBook == null)return(<h1>Loading</h1>)
     return(
+        <>
         <h1>{singleBook.title}</h1>
+        {singleBook.available && <CheckOutBook token={token} bookId={singleBook.id} GetSingleBookInfo={GetSingleBookInfo}/>}
+        </>
     )
 }

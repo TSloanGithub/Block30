@@ -8,9 +8,9 @@ import Navbar from "./Navigations";
 
 
 
-export function AddAllBooks(){
+export function AddAllBooks({token, setToken}){
     const [books, setBooks] = useState([]);
-
+    console.log(token);
     useEffect(()=>{
         const fetchBooks = async ()=>{
             try{
@@ -28,8 +28,7 @@ export function AddAllBooks(){
     },[])
     return(
         <>
-        <Navbar/>
-        <LogInForm/>
+        <Navbar setToken={setToken} token={token}/>
         <h1>Tyler's Library Collection</h1>
         <ul>
             {books.map((book)=>{

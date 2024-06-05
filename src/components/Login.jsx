@@ -2,25 +2,24 @@
 import React from "react"
 import { useState } from "react";
 
-export default function LogInForm() {
+export default function LogInForm({setToken}) {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
 
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const form = e.target;
-        const data = new FormData(form);
-        console.log(data)
-
         try{
             const result = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({userEmail, userPassword})
+            body: JSON.stringify({email: userEmail, password: userPassword})
         });
+        const info = await result.json();
+        console.log(info);
+        setToken(info.token);
         } catch (error){
             console.error('Error Submitting Login Info');
         }
@@ -34,7 +33,7 @@ export default function LogInForm() {
     return(
         <>
             <div>
-                <form method="post" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <label>Email:</label>
                     <input 
                         type="email" 
