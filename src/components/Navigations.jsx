@@ -3,18 +3,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import LogInForm from './Login'
-import AccountDetails from './Account'
+// import AccountDetails from './Account'
+// import { AccessAlarm, ThreeDRotation, HomeIcon } from '@mui/icons-material';
+import HomeIcon from '@mui/icons-material/Home'
 
 export default function Navbar({token, setToken}){
     return(
         <div id="navbar">
-            <Link to="/">Home</Link>
-            <Link to="register">Register Here!</Link>
+            <Link to="/"><HomeIcon/></Link>
             {token ? (<>
             <Link to="account">Account</Link>
+            <Link to="/" onClick={()=>setToken('')}>Logout</Link>
             </>
         ) : (<>
             <LogInForm setToken={setToken}/>
+            <Link to="register">Register Here!</Link>
             </>
         )}
         </div>

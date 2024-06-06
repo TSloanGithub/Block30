@@ -13,6 +13,7 @@ function App() {
 
   return (
     <>
+      <Navbar setToken={setToken} token={token}/>
       <Routes>
         <Route path='/' element={<AddAllBooks token={token} setToken={setToken}/>}/>
         <Route path='/books/:bookId' element={<SingleBookDetails token={token}/>}/>

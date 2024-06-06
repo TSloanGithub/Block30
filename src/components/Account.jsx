@@ -47,6 +47,7 @@ export default function AccountDetails({token}){
     return(
         <>
         <h1>Welcome {account.firstname}!</h1>
+        <h2>Email: {account.email}</h2>
         <ul>
             {account.books.map((book)=>{
             return <>

@@ -10,6 +10,8 @@ import Navbar from "./Navigations";
 
 export function AddAllBooks({token, setToken}){
     const [books, setBooks] = useState([]);
+    const [search, setSearch] = useState('');
+    // const [storedBooks, setStoredBooks] = useState([]);
     console.log(token);
     useEffect(()=>{
         const fetchBooks = async ()=>{
@@ -26,12 +28,15 @@ export function AddAllBooks({token, setToken}){
         }
         fetchBooks();
     },[])
+    // useEffect(()=>{
+
+    // },[search])
     return(
         <>
-        <Navbar setToken={setToken} token={token}/>
         <h1>Tyler's Library Collection</h1>
+        <input type="text" placeholder="Search" value={search} onChange={(e)=>setSearch(e.target.value)}/> 
         <ul>
-            {books.map((book)=>{
+            {books.filter(book=>book.title.toLowerCase().includes(search.toLowerCase())).map((book)=>{
             return <BookTitle key={book.id} title={book.title} id={book.id} available={book.available}/>
             })}
         </ul>
