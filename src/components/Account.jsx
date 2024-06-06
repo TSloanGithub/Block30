@@ -17,7 +17,6 @@ export default function AccountDetails({token}){
 
         })
         const result = await response.json();
-        console.log(result);
         await getAccount();
         }catch(error){
         console.error('Error Checking out book')
@@ -34,7 +33,6 @@ export default function AccountDetails({token}){
             })
             const result = await response.json();
             setAccount(result);
-            console.log(result);
             }catch(error){
             console.error('Error Checking out book')
             }

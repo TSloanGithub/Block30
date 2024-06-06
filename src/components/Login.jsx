@@ -18,7 +18,6 @@ export default function LogInForm({setToken}) {
             body: JSON.stringify({email: userEmail, password: userPassword})
         });
         const info = await result.json();
-        console.log(info);
         setToken(info.token);
         } catch (error){
             console.error('Error Submitting Login Info');

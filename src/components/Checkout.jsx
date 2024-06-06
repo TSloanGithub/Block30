@@ -19,7 +19,6 @@ export default function CheckOutBook({token, bookId, GetSingleBookInfo}){
 
             })
             const result = await response.json();
-            console.log(result);
             setCheckedOutBooks(result);
             GetSingleBookInfo(bookId);
         }catch(error){

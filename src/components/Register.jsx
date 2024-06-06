@@ -19,7 +19,6 @@ export default function RegisterNewUser({setToken}){
                 body: JSON.stringify({email: userEmail, password: userPassword, firstname: firstName, lastname: lastName})
             });
             const info = await result.json();
-            console.log(info);
             setToken(info.token);
             } catch (error){
                 console.error('Error Submitting Login Info');
